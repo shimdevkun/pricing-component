@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+:root {
+	--white: #fff;
+	--very-light-grayish-blue: hsl(240, 78%, 98%);
+	--light-grayish-blue: hsl(234, 14%, 74%);
+	--grayish-blue: hsl(233, 13%, 49%);
+	--dark-grayish-blue: hsl(232, 13%, 33%);
+
+	--linear-gradient: linear-gradient(
+		0.25turn,
+		hsl(236, 72%, 79%),
+		hsl(237, 63%, 64%)
+	);
+}
+
+*,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 0.9375rem;
+	font-weight: 700;
+
+	background: var(--very-light-grayish-blue);
+	color: var(--grayish-blue);
+	text-align: center;
+}
+
+/* Typography */
+h1 {
+	margin: 2em auto 1em;
+}
+
+h3 {
+	margin: 0;
+}
+
+p {
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* Toggle switch */
+.toggle-switch {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 4em;
+}
+
+.switch {
+	cursor: pointer;
+	position: relative;
+
+	/* TODO: adjust */
+	width: 3em;
+	height: 1.5em;
+
+	background: var(--linear-gradient);
+	border-radius: 1em;
+	margin: 0 1em;
+}
+
+.switch::after {
+	content: '';
+	position: absolute;
+
+	/* TODO: Adjust */
+	width: 1em;
+	height: 1em;
+
+	border-radius: 50%;
+	/* TODO: Change */
+	background: white;
+
+	top: 0.25em;
+	left: 0.25em;
+}
+
+#toggle {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+#toggle:focus + .toggle-switch .switch {
+	outline: 1px dotted;
+}
+
+#toggle:checked ~ .toggle-switch .switch::after {
+	transform: translateX(1.5em);
+}
+
+.plan-type {
+	color: var(--light-grayish-blue);
+	font-weight: 700;
+}
+
+/* Switch logic */
+.plan-price-monthly {
+	display: none;
+}
+
+#toggle:checked ~ .plans .plan-price-monthly {
+	display: block;
+}
+
+#toggle:checked ~ .plans .plan-price-annual {
+	display: none;
+}
+
+/* Section PLANS */
+.plan {
+	margin: 0 auto 2em;
+	width: 85%;
+
+	background: var(--white);
+	border-radius: 0.25em;
+}
+
+.plan-featured {
+	color: var(--white);
+	background: var(--linear-gradient);
+}
+
+.plan-title {
+	padding-top: 1.5em;
+}
+
+.plan-price {
+	font-size: 3.5rem;
+	font-weight: 700;
+	padding: 0.5em 0;
+}
+
+.plan-price:not(.featured) {
+	color: var(--dark-grayish-blue);
+}
+
+.plan-price::before {
+	content: '$';
+	font-size: 2rem;
+	margin-right: 0.175em;
+	vertical-align: 25%;
+}
+
+.plan-features {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.plan-features li {
+	border-top: 1px solid var(--light-grayish-blue);
+	padding: 1.5em 0;
+}
+
+.plan-features li:last-child {
+	border-bottom: 1px solid var(--light-grayish-blue);
+}
+
+/* Read More Button */
+
+.plan-read-more {
+	width: 80%;
+	display: inline-block;
+	margin: 1.5em auto;
+	padding: 1em 0;
+
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	border: 1px solid transparent;
+
+	border-radius: 0.25em;
+	background: var(--linear-gradient);
+	color: var(--very-light-grayish-blue);
+}
+
+.plan-read-more.featured {
+	background: var(--white);
+	color: hsl(237, 63%, 64%);
+}
+
+.plan-read-more:hover,
+.plan-read-more:focus {
+	cursor: pointer;
+	border: 1px solid;
+
+	background: var(--white);
+	color: hsl(237, 63%, 64%);
+	border-color: hsl(237, 63%, 64%);
+}
+
+.plan-read-more.featured:hover,
+.plan-read-more.featured:focus {
+	background: var(--linear-gradient);
+	color: var(--white);
+	border-color: var(--white);
+}
+
+/* Attribution */
+.attribution {
+	font-size: 11px;
+	text-align: center;
+}
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}
+
+.attribution div {
+	margin-bottom: 1em;
+}
+
+/* SVGs */
+.bg-top {
+	position: fixed;
+	margin-top: -2.5em;
+	margin-right: -12em;
+	top: 0;
+	right: 0;
+	z-index: -1;
+}
+
+.bg-bottom {
+	display: none;
+}
+
+/* Media Query */
+@media (min-width: 1440px) {
+	.container {
+		width: 76%;
+		margin: 0 auto 3em;
+	}
+
+	/* Plans */
+	.plans {
+		display: flex;
+		align-items: center;
+	}
+
+	.plan {
+		margin: 0;
+	}
+
+	.plan-featured {
+		padding: 1.5em 0;
+	}
+
+	/* SVGs*/
+	.bg-top {
+		margin: 0;
+	}
+
+	.bg-bottom {
+		display: block;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		z-index: -1;
+	}
+
+	/* Attribution*/
+	.attribution {
+		display: flex;
+		justify-content: center;
+	}
+}
