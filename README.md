@@ -2,7 +2,7 @@
 
 This is my personal solution for the pricing-component challenge by Frontend Mentor.
 
-You can see the live version [here](https://pricing-component.xstrafez.now.sh/ 'pricing-component')
+See the live version [here](https://pricing-component.sshimabuku.now.sh/ 'pricing-component')
 
 ### Note
 
